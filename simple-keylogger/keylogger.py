@@ -123,10 +123,9 @@ def on_press(key):
             else:
                 file.write(t)
     except AttributeError:
-        print()
-        # if key == keyboard.Key.enter or keyboard.Key.tab:
-        #     with open('log.txt', 'a', encoding='utf-8') as file:
-        #         file.write('\n')
+        if key == keyboard.Key.enter or key == keyboard.Key.tab:
+            with open('log.txt', 'a', encoding='utf-8') as file:
+                file.write('\n')
 
 def on_release(key):
     global esc_count
