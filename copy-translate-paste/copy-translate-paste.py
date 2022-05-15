@@ -3,6 +3,7 @@ import pyautogui as pag
 import pyperclip as ppc
 from pynput import keyboard as kb
 
+pag.FAILSAFE = False
 esc_count = 0
 text = ""
 
@@ -10,8 +11,8 @@ def on_press(key):
     global text
     if key == kb.Key.f7:        # Change Hotkey from 'F7' to whatever
         pag.hotkey('ctrl', 'c')
-        text = str(ppc.paste())
-        result = str(ts.google(text, from_language='en', to_language='th'))
+        text = ppc.paste()
+        result = ts.google(text, from_language='en', to_language='th')
         if result != text:
             ppc.copy(result)
         else:
